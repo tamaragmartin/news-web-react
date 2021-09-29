@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 class Footer extends Component {
   render() {
-    return <div>Footer</div>;
+    return (
+    <h1>Esto es el Footer</h1>
+    );
   }
 }
 
