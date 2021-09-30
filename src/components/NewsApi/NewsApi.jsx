@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const NewsApi = ({ lista }) => {
     return (
         <div>
-          <h1>Noticias sugeridas para usted:</h1>
+          
              {/* {
                  lista.map(news => 
                          <Fragment key={news.title} >

@@ -3,6 +3,7 @@ import Card from '../Card'
 import cards from '../../data.json'
 
 
+
 export class Form extends Component {
 
       constructor(props) {
@@ -14,7 +15,7 @@ export class Form extends Component {
       };
     }
 
-    addNew = (e) => {
+    addCard = (e) => {
       e.preventDefault();
       const title = e.target.title.value;
       const category = e.target.category.value;
@@ -38,9 +39,9 @@ export class Form extends Component {
       return (
       <>
                  
-        <form onSubmit={this.addNew} className="form"> 
+        <form onSubmit={this.addCard} className="form"> 
           <label>
-          <input type="text" name="title" placeholder="Añade una tarea noticia" className="newNew" />
+          <input type="text" name="title" placeholder="Añade una noticia" className="newCard" />
           </label> 
           <label>
           <input type="text" name="category" placeholder="Añade una categoria" />
@@ -50,10 +51,10 @@ export class Form extends Component {
         
         <section> 
           <article>
-             <h4>Noticias sugeridas:</h4> 
+             <h4>Noticias añadidas:</h4> 
              {this.paintCards()} 
           </article>
-        </section>
+        </section> 
         
         
         

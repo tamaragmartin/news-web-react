@@ -36,8 +36,6 @@ class ListNews extends Component {
     console.log('componentWillUnmount');
   }
 
-
-
   render() {
     return (
     <div>
