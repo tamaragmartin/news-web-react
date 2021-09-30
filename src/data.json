@@ -1,0 +1,15 @@
+ [
+    {
+        "title": "Noticia 1",
+        "category": "Política"
+    },
+    {
+        "title": "Noticia 2",
+        "category": "Deporte"
+    },
+    {
+        "title": "Noticia 3",
+        "category": "tecnología"
+    }
+]
+
