@@ -1,0 +1,12 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+}
+
+.App {
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
