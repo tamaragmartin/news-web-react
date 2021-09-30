@@ -4,15 +4,22 @@ const NewsApi = ({ lista }) => {
     return (
         <div>
           <h1>Noticias sugeridas para usted:</h1>
-            {
-                lista.map(news => 
-                        <Fragment key={news.title} >
-                            
-                            <p>{news.title}</p>
-                            <p>{news.category}</p>
+             {/* {
+                 lista.map(news => 
+                         <Fragment key={news.title} >
+                            <a href={news.url} alt=""> {news.title} </a>
+                            <p>{news.url}</p> 
+                         </Fragment>
+                )
+            }  */}
+              {
+                lista.map(pokemon => 
+                        <Fragment key={pokemon.name} >
+                            <a href={pokemon.url} alt={pokemon.name + 'image'}> {pokemon.name} </a>
+                            <p>{pokemon.url}</p>
                         </Fragment>
                 )
-            }
+            } 
         </div>
     );
 }
