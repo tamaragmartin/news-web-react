@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Nav from "../Nav/Nav";
 
+import {userContext} from '../../context/userContext';
+
 class Header extends Component {
   render() {
     return (
