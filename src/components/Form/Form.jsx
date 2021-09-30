@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from '../Card'
 import cards from '../../data.json'
 
+
 export class Form extends Component {
 
       constructor(props) {
