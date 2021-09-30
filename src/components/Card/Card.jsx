@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 
-class Card extends Component {
-  render() {
-    return <h3>This is Card</h3>;
+export class Card extends Component {
+  
+    render() {
+      const {title,category} = this.props.info 
+  
+      return (
+        <section>
+          <p>{title}</p> 
+          <p>{category}</p> 
+          <button onClick={this.props.remove}>Borrar</button>
+        </section>
+      )
   }
 }
 
