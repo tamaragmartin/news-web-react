@@ -13,13 +13,14 @@ class Header extends Component {
       <h1>Tamara's News Feed</h1>
       <Nav/>
       <userContext.Consumer>
-        {({user,logout}) => user.name?                    
-          <>
+        {({user,logout}) => user.name
+          ?<>
             <p>Hola de nuevo, {user.name}</p>
-            <button onClick={()=>logout()}>Logout</button>
-          </> :"" 
+            <button onClick={()=>logout()}>Cerrar sesión</button>
+          </> 
+          :"" 
         }
-        </userContext.Consumer>
+      </userContext.Consumer>
     </header>
     );
   }

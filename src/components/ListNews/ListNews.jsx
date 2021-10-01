@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 
-import NewsApi from "../NewsApi"
+import Card from "../Card"
 
 
 
@@ -9,15 +9,22 @@ class ListNews extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { newsLista: [] }
+    this.state = { 
+      newsLista: [],
+    }
         
   }
   
+  removeOne = (i) => {
+    const fetchedNews = this.state.newsLista.filter((card, j) => j!==i);
+    this.setState({newsLista:fetchedNews}) 
+  }
+
   async componentDidMount(){
     
     await new Promise(resolve => setTimeout(resolve, 2000));
-    //const API_KEY = process.env.REACT_APP_API_KEY
-    //const resp = await axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${API_KEY}`);
+    
+    //const resp = await axios.get(process.env.REACT_APP_URL);
     const resp = await axios.get('https://pokeapi.co/api/v2/pokemon');
     const data = await resp.data;
     this.setState({
@@ -38,12 +45,10 @@ class ListNews extends Component {
 
   render() {
     return (
-    <div>
-      <>
-        <NewsApi lista={this.state.newsLista}></NewsApi>
-      </>
-      
-    </div>
+    <section>
+      <h3>Noticias sugeridas</h3>
+      {this.state.newsLista.map((card, i) => <Card info={card} key={i} removeOne={() => this.removeOne(i)} /> )}        
+    </section>
     );
   }
 }

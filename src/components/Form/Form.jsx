@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Card from '../Card'
-import cards from '../../data.json'
+import { Redirect } from 'react-router-dom';
 
-
+import {userContext} from '../../context/userContext';
 
 export class Form extends Component {
 
@@ -11,52 +10,37 @@ export class Form extends Component {
     
       this.state = {
         data: {},
-        cards: cards,     
+        redirect: false,
+        
       };
     }
 
     addCard = (e) => {
       e.preventDefault();
       const title = e.target.title.value;
-      const category = e.target.category.value;
+      const content = e.target.content.value;
+      const url = e.target.url.value;
       
-      let newCard = {title,category}; 
-      this.setState({ cards: [...this.state.cards, newCard] });
+      const data = {title, content, url}
+      
+      this.setState({ redirect: true, data })
     }
     
-    removeOne = (i) => {
-      const remainingCards = this.state.cards.filter((card, j) => j!==i)
-      this.setState({cards:remainingCards})
-    }
-
-    paintCards = () => {
-      return this.state.cards.map((card, i) => (
-        <Card info={card} key={i} remove={() => this.removeOne(i)} />
-      ));
-    }
+    
 
     render() {
       return (
       <>
-                 
+        <h3>Añade una noticia nueva</h3>
+
         <form onSubmit={this.addCard} className="form"> 
-          <label>
-          <input type="text" name="title" placeholder="Añade una noticia" className="newCard" />
-          </label> 
-          <label>
-          <input type="text" name="category" placeholder="Añade una categoria" />
-          </label> 
-          <input type="submit" value="Add" className="addButton"/>
+          <input type="text" name="title" placeholder="Añade un titular" />
+          <input type="text" name="content" placeholder="Breve descripción" />
+          <input type="text" name="url" placeholder="Añade la URL" />
+          <input type="submit" value="Añadir" />
+          {/* <Redirect to="/list" /> & onClick={this.props.history.push('/list')} Redirige automáticamente ?? */}
         </form>  
-        
-        <section> 
-          <article>
-             <h4>Noticias añadidas:</h4> 
-             {this.paintCards()} 
-          </article>
-        </section> 
-        
-        
+           
         
       </>
       )
