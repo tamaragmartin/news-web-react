@@ -9,13 +9,13 @@ class ListNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newsLista: [],
+      newsList: [],
     };
   }
 
   removeOne = (i) => {
-    const fetchedNews = this.state.newsLista.filter((card, j) => j !== i);
-    this.setState({ newsLista: fetchedNews });
+    const fetchedNews = this.state.newsList.filter((card, j) => j !== i);
+    this.setState({ newsList: fetchedNews });
   };
 
   async componentDidMount() {
@@ -26,7 +26,7 @@ class ListNews extends Component {
      const data = await resp.data.articles;
     
       this.setState({
-         newsLista: data.slice(0, 5),
+         newsList: data.slice(0, 5),
       });
     console.log("componentDidMount");
   }
@@ -44,7 +44,9 @@ class ListNews extends Component {
     return (
       <section>
         <h3>Noticias sugeridas</h3>
-        {this.state.newsLista.map((card, i) => (
+
+
+        {this.state.newsList.map((card, i) => (
           <Card info={card} key={i} removeOne={() => this.removeOne(i)} />
         ))}
       </section>
