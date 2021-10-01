@@ -3,6 +3,8 @@ import axios from "axios";
 
 import Card from "../Card";
 
+import env from "react-dotenv";
+
 class ListNews extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +20,14 @@ class ListNews extends Component {
 
   async componentDidMount() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    //const resp = await axios.get(process.env.REACT_APP_URL);
-    const resp = await axios.get("https://pokeapi.co/api/v2/pokemon");
-    const data = await resp.data;
-    this.setState({
-      newsLista: data.results.slice(0, 5),
-    });
+       
+    const resp = await axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.REACT_APP_API_KEY}`);
+       
+     const data = await resp.data.articles;
+    
+      this.setState({
+         newsLista: data.slice(0, 5),
+      });
     console.log("componentDidMount");
   }
 

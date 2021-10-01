@@ -9,33 +9,45 @@ export class Form extends Component {
 
     this.state = {
       data: {},
-      redirect: false,
+      
+      // redirect: false,
     };
   }
 
   addCard = (e) => {
     e.preventDefault();
-    const title = e.target.title.value;
-    const content = e.target.content.value;
-    const url = e.target.url.value;
+    
+    this.props.handleData(this.state.data)
 
-    const data = { title, content, url };
+    //  this.setState({ redirect: true, data });
+  };
 
-    this.setState({ redirect: true, data });
+  handleChange = (event)=>{
+    this.setState({data: {...this.state.data,[event.target.name]: event.target.value}})
+}
+
+  paintCard = () => {
+    return this.state.data;
   };
 
   render() {
     return (
       <>
-        <h3>Añade una noticia nueva</h3>
+        <section>
+          <h3>Añade una noticia nueva</h3>
+          <form onSubmit={this.addCard} className="form">
+            <input type="text" name="title" placeholder="Añade un titular" onChange={this.handleChange} />
+            <input type="text" name="content" placeholder="Breve descripción" onChange={this.handleChange}/>
+            <input type="text" name="url" placeholder="Añade la URL" onChange={this.handleChange}/>
+            <input type="submit" value="Añadir" />
+            {/* <Redirect to="/list" /> & onSubmit={this.props.history.push('/list')} Redirige automáticamente ?? */}
+          </form>
+        </section>
 
-        <form onSubmit={this.addCard} className="form">
-          <input type="text" name="title" placeholder="Añade un titular" />
-          <input type="text" name="content" placeholder="Breve descripción" />
-          <input type="text" name="url" placeholder="Añade la URL" />
-          <input type="submit" value="Añadir" />
-          {/* <Redirect to="/list" /> & onClick={this.props.history.push('/list')} Redirige automáticamente ?? */}
-        </form>
+        <section>
+          <h4>Noticias añadidas</h4>
+          {this.paintCard}
+        </section>
       </>
     );
   }

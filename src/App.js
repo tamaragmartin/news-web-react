@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 
 import '../src/styles/syles.scss'
 
+
 require('dotenv').config()
 
 export class App extends Component {
@@ -34,13 +35,15 @@ export class App extends Component {
 
     return (
       <div className="App">
-      <BrowserRouter>
-        <userContext.Provider value={value}>
-          <Header/>
-          <Main/>
-        </userContext.Provider>
-      </BrowserRouter>
-      <Footer/>
+      
+        <BrowserRouter>
+          <userContext.Provider value={value}>
+            <Header/>
+            <Main/>
+          </userContext.Provider>
+        </BrowserRouter>
+        <Footer/>
+      
     </div>
     )
   }
