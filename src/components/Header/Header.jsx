@@ -10,14 +10,16 @@ class Header extends Component {
     return (
       <header className="header">
         {/* <img src={logo} alt="newspaper"/> */}
-        <h1>Tamara's News Feed</h1>
+        <h1>TechCrunch's News Feed</h1>
         <Nav />
         <userContext.Consumer>
           {({ user, logout }) =>
             user.name ? (
               <>
-                <p>Hola de nuevo, {user.name}</p>
-                <button onClick={() => logout()}>Cerrar sesión</button>
+                <p className="header--welcome">Welcome back, {user.name}!</p>
+                <button className="header--button" onClick={() => logout()}>
+                  Logout
+                </button>
               </>
             ) : (
               ""
