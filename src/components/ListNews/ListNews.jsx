@@ -3,8 +3,6 @@ import axios from "axios";
 
 import Card from "../Card";
 
-// import env from "react-dotenv";
-
 class ListNews extends Component {
   constructor(props) {
     super(props);
@@ -13,24 +11,23 @@ class ListNews extends Component {
     };
   }
 
-  removeOne = (i) => {
-    const fetchedNews = this.state.newsList.filter((card, j) => j !== i);
-    this.setState({ newsList: fetchedNews });
-  };
-
+  //Fetch de noticias 
   async componentDidMount() {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-       
-    const resp = await axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.REACT_APP_API_KEY}`);
-       
-     const data = await resp.data.articles;
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const resp = await axios.get(
+      `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.REACT_APP_API_KEY}`
+    );
+
+    const data = await resp.data.articles; 
+    const result = data.slice(0, 5) //limitar a 5 
     
-      this.setState({
-         newsList: data.slice(0, 5),
-      });
+    //resultado del fetch + añadidos form
+    this.setState({ 
+      newsList: result   });
     console.log("componentDidMount");
   }
-
+  
   componentDidUpdate(prevProps, prevState) {
     console.log("prevProps: ", prevProps, "prevState: ", prevState);
     console.log("componentDidUpdate");
@@ -40,16 +37,29 @@ class ListNews extends Component {
     console.log("componentWillUnmount");
   }
 
-  render() {
-    return (
-      <section>
-        <h3>Suggested posts</h3>
+  removeOne = (i) => {
+    const originalNews = this.state.newsList.filter((card, j) => j !== i);
+    this.setState({ newsList: originalNews });
+  };
 
-        {this.state.newsList.map((card, i) => (
-          <Card info={card} key={i} removeOne={() => this.removeOne(i)} />
-        ))}
-      </section>
-    );
+  
+  render() {
+    const newsList = this.state.newsList;
+    
+    if (newsList.length === 0) {
+      return <h1>Aquí el spinner</h1>;
+    } else {
+      return (
+        <section>
+          <h3>Suggested posts</h3>
+          
+          {this.state.newsList.map((card, i) => (
+            <Card info={card} key={i} removeOne={() => this.removeOne(i)} /> //pinta noticias
+          ))} 
+
+        </section>
+      );
+    }
   }
 }
 

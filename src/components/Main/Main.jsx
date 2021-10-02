@@ -13,10 +13,12 @@ class Main extends Component {
     this.state = {
       data: []
     }
+    
   }
-    handleData = (newArticle) => {
+
+    addArticle = (newArticle) => {
       this.setState({ data: [...this.state.data, newArticle]})
-      
+     
     } 
 
     render() {  
@@ -24,7 +26,7 @@ class Main extends Component {
       <main>
       <Switch>
           <Route path="/" component={Home} exact/>
-          <Route path="/form" component={()=> <Form handleData={this.handleData} />} /> 
+          <Route path="/form" component={()=> <Form addArticle={this.addArticle} />} /> 
           <Route path="/list" component={()=> <ListNews info={this.state.data} />} />
           <Route component={Error} />
       </Switch>
