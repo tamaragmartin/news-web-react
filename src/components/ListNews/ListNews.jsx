@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import { Ellipsis } from 'react-spinners-css';
+
 import Card from "../Card";
 
 class ListNews extends Component {
@@ -13,7 +15,7 @@ class ListNews extends Component {
 
   //Fetch de noticias 
   async componentDidMount() {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     const resp = await axios.get(
       `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.REACT_APP_API_KEY}`
@@ -47,7 +49,7 @@ class ListNews extends Component {
     const newsList = this.state.newsList;
     
     if (newsList.length === 0) {
-      return <h1>Aquí el spinner</h1>;
+      return <div><Ellipsis color="#f08c33" size={100} /></div>;
     } else {
       return (
         <section>
