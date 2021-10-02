@@ -22,25 +22,29 @@ class Home extends Component {
   render() {
     return (
       <section>
-        <h2>Introduce tu nombre de usuario</h2>
+      <container className="home">
+        <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
-          <label>Nombre:</label>
           <input
             type="text"
             name="name"
             onChange={this.handleChange}
             ref={this.name}
+            placeholder="Enter username"
           />
           <userContext.Consumer>
             {({ user, login }) => (
+              <p>
               <input
                 type="submit"
-                value="Enviar"
+                value="Let's go"
                 onClick={() => login(this.name.current.value)}
               />
+              </p>
             )}
           </userContext.Consumer>
         </form>
+        </container>
       </section>
     );
   }

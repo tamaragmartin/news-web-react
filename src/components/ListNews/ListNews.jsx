@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Card from "../Card";
 
-import env from "react-dotenv";
+// import env from "react-dotenv";
 
 class ListNews extends Component {
   constructor(props) {
@@ -43,8 +43,7 @@ class ListNews extends Component {
   render() {
     return (
       <section>
-        <h3>Noticias sugeridas</h3>
-
+        <h3>Suggested posts</h3>
 
         {this.state.newsList.map((card, i) => (
           <Card info={card} key={i} removeOne={() => this.removeOne(i)} />

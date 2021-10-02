@@ -9,7 +9,7 @@ export class Card extends Component {
         <p>{title}</p>
         <p>{content}</p>
         <p>  <a href={url}>Link</a> </p>
-        <button onClick={this.props.removeOne}>Borrar</button>
+        <button onClick={this.props.removeOne}>Remove</button>
       </section>
     );
   }
