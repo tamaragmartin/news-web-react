@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
-// import { withRouter } from "react-router-dom";
-// import { Redirect } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export class Form extends Component {
   constructor(props) {
@@ -29,22 +28,11 @@ export class Form extends Component {
     }
   };
 
-  //*Para redirigir a List
-  // submitForm(e) {
-  //   e.preventDefault();
-  //   this.props.history.push("/list");
-  // }
-
-  //   onSubmit = () => {
-  //     return <Redirect to='/list' />
-  // }
-
   render() {
     return (
       <>
-        <h3>Add a new article</h3>
-        {/* <form onSubmit={this.submitForm.bind(this)} className="form"> */}
-        <form action="">
+        <form action="" className="form">
+          <h3>Add a new article</h3>
           <input type="text" placeholder="Title" ref={this.title} />
           <input
             type="text"
@@ -52,13 +40,13 @@ export class Form extends Component {
             ref={this.content}
           />
           <input type="text" placeholder="URL" ref={this.url} />
-          <button onClick={this.addCard}>Add</button>
-          {/* <input type="submit" value="Add" onClick={this.addCard} /> */}
+          <button type="submit" onClick={this.addCard}>
+            <Link to="/list">Add</Link>
+          </button>
         </form>
       </>
     );
   }
 }
 
-// export default withRouter(Form);
 export default Form;

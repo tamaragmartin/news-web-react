@@ -1,0 +1,10 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.list {
+  & > h3 {
+    @include maintitles;
+    text-align: center;
+    letter-spacing: 6px;
+  }
+}

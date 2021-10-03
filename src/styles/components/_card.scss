@@ -1,0 +1,32 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.card {
+  text-align: center;
+  @include boxes;
+  width: 50vw;
+  height: 14vw;
+  & > h2 {
+    color: $palette8;
+    font-family: "Roboto";
+    font-weight: bolder;
+  }
+  & > h3 {
+    @include regularfont;
+  }
+  & > a {
+    text-decoration: none;
+    color: $palette3;
+    margin-right: 100px;
+    margin-top: 100px;
+    font-size: 20px;
+    &:visited {
+      color: $palette3;
+    }
+  }
+  & > button {
+    @include button;
+    font-size: 15px;
+    height: 30px;
+  }
+}

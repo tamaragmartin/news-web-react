@@ -20,11 +20,14 @@ class Home extends Component {
   };
 
   render() {
+    //borrar texto del input
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach((input) => (input.value = ""));
+
     return (
-      <section>
-      <container className="home">
-        <h2>Login</h2>
-        <form onSubmit={this.handleSubmit}>
+      <>
+        <form onSubmit={this.handleSubmit} className="home">
+          <h2>Login</h2>
           <input
             type="text"
             name="name"
@@ -34,18 +37,17 @@ class Home extends Component {
           />
           <userContext.Consumer>
             {({ user, login }) => (
-              <p>
-              <input
+              <button
                 type="submit"
                 value="Let's go"
                 onClick={() => login(this.name.current.value)}
-              />
-              </p>
+              >
+                Send
+              </button>
             )}
           </userContext.Consumer>
         </form>
-        </container>
-      </section>
+      </>
     );
   }
 }
