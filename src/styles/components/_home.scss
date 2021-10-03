@@ -1,5 +1,22 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
 .home {
     @include flexcenter; 
     @include boxes;
-    // @include titles;
+    & > h2 {
+        @include maintitles;
+        
+    }
+    & > input {
+        @include input;
+      }
+      & > button {
+        @include button;
+        & > a {
+          @include hyperlink;
+        }
+      }
+
+    
 }

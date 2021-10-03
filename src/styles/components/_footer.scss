@@ -1,18 +1,16 @@
-@import '../utils/variables';
+@import "../utils/variables";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
 .footer {
-    
-    background-color: $palette8;
-    padding-top: 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    & > h5 {
-        flex-basis: 90%;
-        font-size: 12px;
-    }
-    
+  @include flexcenter;
+  background-color: $palette8;
+  padding-top: 10px;
+  width: 100%;
+  height: 50px;
+  & > h5 {
+    flex-basis: 90%;
+    @include regularfont;
+    color: #fff;
+  }
 }

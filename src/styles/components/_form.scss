@@ -1,0 +1,20 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.form {
+  @include flexcenter;
+  @include boxes;
+  height: 20vw;
+  & > h3 {
+    @include maintitles;
+  }
+  & > input {
+    @include input;
+  }
+  & > button {
+    @include button;
+    & > a {
+      @include hyperlink;
+    }
+  }
+}

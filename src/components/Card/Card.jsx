@@ -5,11 +5,13 @@ export class Card extends Component {
     const { title, content, url } = this.props.info;
 
     return (
-      <section>
-        <p>{title}</p>
-        <p>{content}</p>
-        <p> <a href={url} target="_blank" rel="noreferrer">Link</a> </p>
-        <button onClick={this.props.removeOne}>Remove</button>
+      <section className="card">
+        <h2>{title}</h2>
+        <h3>{content}</h3>
+        <a href={url} target="_blank" rel="noreferrer">
+          Read full article
+        </a>
+        <button onClick={this.props.removeOne}>Delete</button>
       </section>
     );
   }

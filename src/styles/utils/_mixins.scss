@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Staatliches&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
 @mixin flexcenter {
   display: flex;
   text-align: center;
@@ -10,25 +12,86 @@
 }
 
 @mixin boxes {
-    width: 25vw;
-    height: 15vw;
-    padding: 20px;
-    margin: 30px auto;
-    border-radius: 15px;
-    border: solid 2px $palette4;
-    background-color: $palette6;
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    justify-content: space-evenly;
-    // &:hover{
-    //     background-color: $palette2;
-    //     border: solid 2px $palette3;
-    // }
+  width: 25vw;
+  height: 15vw;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 15px;
+  border: solid 2px $palette1;
+  background-color: $palette6;
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 2px 2px 2px $palette7;
+  // &:hover{
+  //     background-color: $palette2;
+  //     border: solid 2px $palette3;
+  // }
 }
 
 @mixin titles {
-    font-size: 25px;
-    text-decoration: none;
-    font-family: "Staatliches", cursive;
-    color: $palette5;
+  font-size: 25px;
+  text-decoration: none;
+  font-family: "Staatliches", cursive;
+  color: $palette5;
+  // letter-spacing: 2px;
+}
+
+@mixin input {
+  width: 90%;
+  margin-bottom: 25px;
+  padding: 0px 10px 5px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+  color: $palette5;
+  &:placeholder {
+    color: $palette4;
+  }
+  &:focus {
+    border-bottom: 1px solid $palette4;
+  }
+}
+
+@mixin button {
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 20px;
+  letter-spacing: 4px;
+  background-color: $palette1;
+  border: none;
+  color: #fff;
+  width: 120px;
+  height: 40px;
+  transition-duration: 0.4s;
+  box-shadow: 2px 2px 2px $palette7;
+  border-radius: 4px;
+  margin-left: 10px;
+  text-decoration: none;
+  opacity: 0.8;
+  font-family: "Righteous", cursive;
+}
+
+@mixin hyperlink {
+  color: white;
+  text-decoration: none;
+  &:visited {
+    color: white;
+  }
+}
+
+@mixin regularfont {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+@mixin maintitles {
+  font-size: 30px;
+  text-decoration: none;
+  font-family: "Staatliches", cursive;
+  color: $palette8;
+  letter-spacing: 4px;
 }
