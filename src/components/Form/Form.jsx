@@ -1,63 +1,64 @@
 import React, { Component } from "react";
 
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
+// import { Redirect } from 'react-router-dom'
 
 export class Form extends Component {
   constructor(props) {
     super(props);
 
-  this.state = {
-    data: {},
-  };
-}
+    this.title = React.createRef();
+    this.content = React.createRef();
+    this.url = React.createRef();
 
-  // addCard = (event) => {
-  //   event.preventDefault();
+    this.state = {
+      data: [],
+    };
+  }
 
-  //   const title = event.target.elements.title.value;
-  //   const content = event.target.elements.content.value;
-  //   const url = event.target.elements.url.value;
-
-  //   if (title && content && url) {
-  //     const card = { title, content, url };
-  //     this.props.addArticle({ card });
-  //   }
-  // };
-
-  // versión Silvia,
-  // addCard = (e) => {
-  //   e.preventDefault();
-  //   this.props.handleData(this.state.data);
-  // };
-  // handleChange = (e) => {
-  //   this.setState({
-  //     data: { ...this.state.data, [e.target.name]: e.target.value },
-  //   });
-  // };
-
-  //Para redirigir a list
-  submitForm(e) {
+  addCard = (e) => {
     e.preventDefault();
-    this.props.history.push("/list");
-  } 
+
+    const title = this.title.current.value;
+    const content = this.content.current.value;
+    const url = this.url.current.value;
+
+    if (title && content && url) {
+      const article = { title, content, url };
+      this.props.addArticle(article);
+    }
+  };
+
+  //*Para redirigir a List
+  // submitForm(e) {
+  //   e.preventDefault();
+  //   this.props.history.push("/list");
+  // }
+
+  //   onSubmit = () => {
+  //     return <Redirect to='/list' />
+  // }
 
   render() {
     return (
       <>
-        <section>
-          <h3>Add a new article</h3>
-          <form onSubmit={this.submitForm.bind(this)} className="form">
-            
-            <input type="text" name="title" placeholder="Title" />
-            <input type="text" name="content" placeholder="Short description" />
-            <input type="text" name="url" placeholder="URL" />
-
-            <input type="submit" value="Add" onClick={this.addCard} />
-          </form>
-        </section>
+        <h3>Add a new article</h3>
+        {/* <form onSubmit={this.submitForm.bind(this)} className="form"> */}
+        <form action="">
+          <input type="text" placeholder="Title" ref={this.title} />
+          <input
+            type="text"
+            placeholder="Short description"
+            ref={this.content}
+          />
+          <input type="text" placeholder="URL" ref={this.url} />
+          <button onClick={this.addCard}>Add</button>
+          {/* <input type="submit" value="Add" onClick={this.addCard} /> */}
+        </form>
       </>
     );
   }
 }
 
-export default withRouter(Form);
+// export default withRouter(Form);
+export default Form;
