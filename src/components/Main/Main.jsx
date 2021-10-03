@@ -27,7 +27,7 @@ class Main extends Component {
       <Switch>
           <Route path="/" component={Home} exact/>
           <Route path="/form" component={()=> <Form addArticle={this.addArticle} />} /> 
-          <Route path="/list" component={()=> <ListNews info={this.state.data} />} />
+          <Route path="/list" component={()=> <ListNews article={this.state.data} />} />
           <Route component={Error} />
       </Switch>
       </main>
